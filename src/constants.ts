@@ -10,7 +10,8 @@ export const constants = {
   'cUSDT': 'cUSDT',
   'BID': 'BID',
   'USDT': 'USDT',
-  'eFIl': 'eFIL'
+  'eFIl': 'eFIL',
+  'cETH': 'cETH'
 };
 
 export const address = {

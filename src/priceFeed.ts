@@ -38,7 +38,7 @@ function validateAsset(
   const underlyingDecimals = decimals[underlyingName];
 
   // The open price feed reveals BTC, not WBTC.
-  underlyingName = underlyingName === 'WBTC' ? 'BTC' : underlyingName;
+  underlyingName = underlyingName === 'eFIL' ? 'FIL' : underlyingName;
 
   return [assetIsCToken, cTokenName, cTokenAddress, underlyingName, underlyingAddress, underlyingDecimals];
 }
@@ -91,10 +91,10 @@ async function cTokenExchangeRate(
  */
 export async function getPrice(
   asset: string,
-  inAsset: string = constants.USDC
+  inAsset: string = constants.USDT
 ) : Promise<number> {
   await netId(this);
-  const errorPrefix = 'Compound [getPrice] | ';
+  const errorPrefix = 'Biduobao [getPrice] | ';
 
   const [
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
