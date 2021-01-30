@@ -4,7 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import minify from 'rollup-plugin-babel-minify';
 import json from '@rollup/plugin-json';
 
-const BrowserBuildPath = './dist/browser/compound.min.js';
+const BrowserBuildPath = './dist/browser/biduobao.min.js';
 
 export default [{
   input: './dist/nodejs/index.js',
@@ -31,7 +31,7 @@ export default [{
     commonjs({
       namedExports: { Compound: ['Compound'] },
     }),
-    minify({ comments: false }),
+    minify({ comments: false, mangle: false }),
     json(),
   ],
   external: [
