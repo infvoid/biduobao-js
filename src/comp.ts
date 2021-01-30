@@ -76,7 +76,7 @@ export async function getCompBalance(
   const provider = await eth._createProvider({ provider: _provider });
   const net = await eth.getProviderNetwork(provider);
 
-  const errorPrefix = 'Compound [getCompBalance] | ';
+  const errorPrefix = 'Biduobao [getCompBalance] | ';
 
   if (typeof _address !== 'string') {
     throw Error(errorPrefix + 'Argument `_address` must be a string.');
@@ -88,11 +88,11 @@ export async function getCompBalance(
     throw Error(errorPrefix + 'Argument `_address` must be a valid Ethereum address.');
   }
 
-  const compAddress = address[net.name].COMP;
+  const compAddress = address[net.name].BID;
   const parameters = [ _address ];
   const trxOptions: CallOptions = {
     _compoundProvider: provider,
-    abi: abi.COMP,
+    abi: abi.BID,
   };
 
   const result = await eth.read(compAddress, 'balanceOf', parameters, trxOptions);
@@ -125,7 +125,7 @@ export async function getCompAccrued(
   const provider = await eth._createProvider({ provider: _provider });
   const net = await eth.getProviderNetwork(provider);
 
-  const errorPrefix = 'Compound [getCompAccrued] | ';
+  const errorPrefix = 'Biduobao [getCompAccrued] | ';
 
   if (typeof _address !== 'string') {
     throw Error(errorPrefix + 'Argument `_address` must be a string.');
@@ -138,7 +138,7 @@ export async function getCompAccrued(
   }
 
   const lensAddress = address[net.name].CompoundLens;
-  const compAddress = address[net.name].COMP;
+  const compAddress = address[net.name].BID;
   const comptrollerAddress = address[net.name].Comptroller;
   const parameters = [ compAddress, comptrollerAddress, _address ];
   const trxOptions: CallOptions = {
@@ -244,11 +244,11 @@ export async function delegate(
     throw Error(errorPrefix + 'Argument `_address` must be a valid Ethereum address.');
   }
 
-  const compAddress = address[this._network.name].COMP;
+  const compAddress = address[this._network.name].BID;
   const trxOptions: CallOptions = {
     ...options,
     _compoundProvider: this._provider,
-    abi: abi.COMP,
+    abi: abi.BID,
   };
   const parameters = [ _address ];
   const method = 'delegate(address)';
@@ -333,11 +333,11 @@ export async function delegateBySig(
       'contains the v, r, and s pieces of an EIP-712 signature.');
   }
 
-  const compAddress = address[this._network.name].COMP;
+  const compAddress = address[this._network.name].BID;
   const trxOptions: CallOptions = {
     ...options,
     _compoundProvider: this._provider,
-    abi: abi.COMP,
+    abi: abi.BID,
   };
   const { v, r, s } = signature;
   const parameters = [ _address, nonce, expiry, v, r, s ];
@@ -379,7 +379,7 @@ export async function createDelegateSignature(
   await netId(this);
 
   const provider = this._provider;
-  const compAddress = address[this._network.name].COMP;
+  const compAddress = address[this._network.name].BID;
   const chainId = this._network.id;
   let userAddress = this._provider.address;
 
